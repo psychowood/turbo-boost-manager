@@ -13,10 +13,5 @@ fi
 echo "[TurboBoost is currently enabled]"
 echo
 echo "Disabling TurboBoost now..."
-
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-KEXT=$DIR/kext/DisableTurboBoost.64bits.kext
-sudo /usr/sbin/chown -R root:wheel $KEXT
-sudo /usr/bin/kextutil -v $KEXT
-
+sudo /usr/bin/kextutil -v /Applications/Turbo\ Boost\ Switcher.app/Contents/Resources/DisableTurboBoost.64bits.kext
 echo "Turbo Boost disabled."
