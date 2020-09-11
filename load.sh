@@ -13,5 +13,5 @@ fi
 echo "[TurboBoost is currently enabled]"
 echo
 echo "Disabling TurboBoost now..."
-sudo /usr/bin/kextutil -v /Applications/Turbo\ Boost\ Switcher.app/Contents/Resources/DisableTurboBoost.64bits.kext
+sudo /usr/bin/kextutil -v '/Applications/Turbo Boost Switcher.app/Contents/Resources/DisableTurboBoost.64bits.kext'
 echo "Turbo Boost disabled."
