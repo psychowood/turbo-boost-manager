@@ -48,7 +48,7 @@ do
             sleep 0.5
             ;;
         5)
-            exit 0
+            echo "Bye"
             ;;
         *)
             echo
@@ -60,3 +60,4 @@ do
     esac
 done
 sudo -k 
+exit 0
