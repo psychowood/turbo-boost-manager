@@ -39,6 +39,8 @@ This is a shell script that uses Apple's CLI kext management tools (`kextunload`
 	5) Exit
   ```
   
+  ![example](assets/example.png)
+  
   **N.B.** option #3, unloads the kext and loads it back again, to ensure that the kext is loaded. It is probably more useful after waking system from sleep when the kext is automatically unloaded.
 
 ## Licence
@@ -65,4 +67,3 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 ```
 
 In accordance with the terms of the licence, I am distibuting this software under the same licence.
-I simply provide a CLI to manage TBS's kext.
