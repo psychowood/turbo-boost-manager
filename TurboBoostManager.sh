@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-source ./functions.sh
+source '/Users/deepankar/OneDrive - O365 Turun yliopisto/Git/GitHub/forks/turbo-boost-disable/functions.sh'
 
 while true
 do
@@ -40,7 +40,6 @@ do
             UNLOAD
             sleep 1 # give time to the system to do unload the kext properly
             LOAD
-            PRINT_STATUS
             break
             ;;
         4)
