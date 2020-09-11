@@ -1,17 +1,25 @@
 #!/usr/bin/env sh
 # Re-enables turbo boost by disabling the kext that enabled it
 
-echo "Checking if Turbo Boost is enabled..."
+RED='\033[91m'
+GREEN='\033[92m'
+CYAN='\033[96m'
+NC='\033[0m'
+
+echo "Checking status of Turbo Boost..."
 result=`kextstat | grep -c com.rugarciap.DisableTurboBoost`
-if [ $result -eq 0 ]
+if [ $result -gt 0 ]
 then 
-    echo "No kext to disable."
-    echo "Turbo Boost is still enabled."
+    
+    echo "TurboBoost is currently [${RED}enabled${NC}]"
+    echo
+    echo "[${RED}!${NC}]Unloading kext now...${NC}"
+    sudo /sbin/kextunload -q '/Applications/Turbo Boost Switcher.app/Contents/Resources/DisableTurboBoost.64bits.kext'
+    echo "Kext ${GREEN}unloaded${NC}. Turbo Boost status: ${RED}enabled${NC}"
     exit 0
 fi
-echo "[Turbo Boost is currently enabled]"
-echo 
-echo "Unloading kext and disabling now..."
-sudo /sbin/kextunload -v '/Applications/Turbo Boost Switcher.app/Contents/Resources/DisableTurboBoost.64bits.kext'
 
-echo "Turbo Boost Enabled."
+echo "[${RED}Kext is not loaded${NC}]"
+echo "Turbo Boost status: ${RED}enabled${NC}"
+exit 0
+

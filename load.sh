@@ -2,16 +2,23 @@
 # disables turbo boost by enabling a pre-signed kext
 # (taken from the core of TurboBoost Switcher, but avoids their crappy interface)
 
-echo "Checking if Turbo Boost already disabled..."
+RED='\033[91m'
+GREEN='\033[92m'
+CYAN='\033[96m'
+NC='\033[0m'
+
+echo "Checking status of Turbo Boost..."
 results=`kextstat | grep -c com.rugarciap.DisableTurboBoost`
 if [ $results -gt 0 ]
 then
-    echo "Found kext com.rugarciap.DisableTurboBoost"
-    echo "Turbo Boost already disabled!"
+    echo "${CYAN}Kext 'com.rugarciap.DisableTurboBoost' is already loaded.${NC}"
+    echo "Turbo Boost status: ${GREEN}disabled${NC}"
     exit 0
 fi
-echo "[TurboBoost is currently enabled]"
+
+echo "Turbo Boost status: ${RED}enabled${NC}"
 echo
-echo "Disabling TurboBoost now..."
-sudo /usr/bin/kextutil -v '/Applications/Turbo Boost Switcher.app/Contents/Resources/DisableTurboBoost.64bits.kext'
-echo "Turbo Boost disabled."
+echo "[${RED}!${NC}]Disabling TurboBoost now...${NC}"
+sudo /usr/bin/kextutil -q '/Applications/Turbo Boost Switcher.app/Contents/Resources/DisableTurboBoost.64bits.kext'
+echo "Kext ${GREEN}loaded${NC}.Turbo Boost status: ${GREEN}disabled.${NC}"
+exit 0
