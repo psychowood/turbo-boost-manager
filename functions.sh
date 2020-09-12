@@ -3,7 +3,6 @@
 
 RED='\033[91m'
 GREEN='\033[92m'
-CYAN='\033[96m'
 NC='\033[0m'
 
 CHECK_STATUS()
@@ -17,11 +16,9 @@ PRINT_STATUS()
     echo "Checking status of Turbo Boost..."
     CHECK_STATUS
     if [ $result -eq 0 ]; then
-        echo "[${RED}Kext is not loaded${NC}]" 
-        echo "TurboBoost is currently [${RED}enabled${NC}]"
+        echo "TurboBoost: [${RED}enabled${NC}]"
     else
-        echo "[${CYAN}Kext 'com.rugarciap.DisableTurboBoost' is loaded.${NC}]"
-        echo "Turbo Boost status: ${GREEN}disabled${NC}"
+        echo "TurboBoost: [${GREEN}disbled${NC}]"
     fi
     echo
 }
@@ -30,7 +27,7 @@ LOAD()
 {    
     # Disables Turbo Boost
     # loads the pre-signed kext from Turbo Boost Switcher
-    echo "[${RED}!${NC}]Disabling TurboBoost now...${NC}"
+    echo "[${GREEN}!${NC}]Disabling TurboBoost now...${NC}"
     sudo /usr/bin/kextutil -q '/Applications/Turbo Boost Switcher.app/Contents/Resources/DisableTurboBoost.64bits.kext'
     PRINT_STATUS
 }

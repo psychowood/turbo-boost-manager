@@ -1,19 +1,29 @@
 #!/usr/bin/env sh
 
-source '/Users/deepankar/OneDrive - O365 Turun yliopisto/Git/GitHub/forks/turbo-boost-disable/functions.sh'
+RED='\033[91m'
+GREEN='\033[92m'
+source '/Users/deepankar/OneDrive - O365 Turun yliopisto/Git/GitHub/forks/turbo-boost-manager/functions.sh'
 
 while true
 do
-	printf ' -- Turbo Boost Manager -- 
+	CHECK_STATUS
+    if [ $result -eq 0 ]; then
+        echo "  ---- Turbo Boost Manager ----"
+        echo "TurboBoost: [${RED}enabled${NC}]"
+    else
+        echo "  ---- Turbo Boost Manager ----"
+        echo "TurboBoost: [${GREEN}disbled${NC}]"
+    fi
+	printf '
 	1) Disable Turbo Boost
 	2) Enable Turbo Boost
-	3) Full-Cycle Disable
+	3) Re-Disable
 	4) Check status
 	5) Exit
 	  
 	Enter: ';
 	read var;
-	
+	# option #3 Re-disable unloads the kext and loads it again
 	case $var in
 	    1)  
 	        CHECK_STATUS

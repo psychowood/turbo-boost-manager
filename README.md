@@ -2,7 +2,7 @@
 
 ## About this project
 
-This tool is **a shell wrapper** for [Turbo Boost Switcher (TBS)](https://github.com/rugarciap/Turbo-Boost-Switcher) functionality behind the command line. You're probably better off using TBS to be honest. 
+This tool is **a shell wrapper** for the functionality of[Turbo Boost Switcher (TBS)](https://github.com/rugarciap/Turbo-Boost-Switcher) in the command line. To be honest, you're probably better off using TBS GUI. 
 
 This tool prioritizes security therefore, you do have to enter password everytime you run the script. If you do not want to enter the password, just buy Turbo Boost Switcher (TBS) PRO or use [edupr91's turbo-boost-disable](https://github.com/edupr91/turbo-boost-disable), but bear in mind that there are security implications of using his method.
 
@@ -34,7 +34,7 @@ This is a shell script that uses Apple's CLI kext management tools (`kextunload`
  -- Turbo Boost Manager --
 	1) Disable Turbo Boost
 	2) Enable Turbo Boost
-	3) Full-Cycle Disable
+	3) Re-Disable
 	4) Check status
 	5) Exit
   ```
