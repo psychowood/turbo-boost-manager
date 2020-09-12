@@ -48,6 +48,7 @@ do
             ;;
         5)
             echo "Bye"
+            exit 0
             ;;
         *)
             echo
