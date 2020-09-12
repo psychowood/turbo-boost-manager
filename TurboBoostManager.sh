@@ -48,7 +48,7 @@ do
         3)
             PRINT_STATUS
             UNLOAD
-            sleep 1 # give time to the system to do unload the kext properly
+            sleep 3 # give time to the system to do unload the kext properly
             LOAD
             break
             ;;
