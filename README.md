@@ -6,6 +6,8 @@ This tool is **a shell wrapper** for the functionality of[Turbo Boost Switcher (
 
 This tool prioritizes security therefore, you do have to enter password everytime you run the script. If you do not want to enter the password, just buy Turbo Boost Switcher (TBS) PRO or use [edupr91's turbo-boost-disable](https://github.com/edupr91/turbo-boost-disable), but bear in mind that there are security implications of using his method.
 
+**Note:** There is a branch named `tmux` for this project which allows TurboBoostManager to run in a tmux session. Although even with that it has to be "unloaded-and-loaded" again after a system sleep.
+
 ## Why this Fork?
 
 + I like menus, and color-coded information.
