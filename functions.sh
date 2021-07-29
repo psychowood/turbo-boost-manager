@@ -7,7 +7,7 @@ NC='\033[0m'
 
 CHECK_STATUS()
 {
-    result=`kextstat | grep -c com.rugarciap.DisableTurboBoost`
+    result=`kmutil showloaded -V release | grep -c com.rugarciap.DisableTurboBoost`
 }
 
 PRINT_STATUS()
