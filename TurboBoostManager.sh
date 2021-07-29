@@ -12,7 +12,7 @@ do
         echo "TurboBoost: [${RED}enabled${NC}]"
     else
         echo "  ---- Turbo Boost Manager ----"
-        echo "TurboBoost: [${GREEN}disbled${NC}]"
+        echo "TurboBoost: [${GREEN}disabled${NC}]"
     fi
 	printf '
 	1) Disable Turbo Boost
