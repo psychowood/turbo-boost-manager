@@ -2,7 +2,8 @@
 
 RED='\033[91m'
 GREEN='\033[92m'
-source '/Users/deepankar/OneDrive - O365 Turun yliopisto/Git/GitHub/forks/turbo-boost-manager/functions.sh'
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+source "$DIR/functions.sh"
 
 while true
 do
