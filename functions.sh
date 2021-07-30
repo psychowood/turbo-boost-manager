@@ -18,7 +18,7 @@ PRINT_STATUS()
     if [ $result -eq 0 ]; then
         echo "TurboBoost: [${RED}enabled${NC}]"
     else
-        echo "TurboBoost: [${GREEN}disbled${NC}]"
+        echo "TurboBoost: [${GREEN}disabled${NC}]"
     fi
     echo
 }
