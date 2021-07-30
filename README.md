@@ -34,7 +34,7 @@ Since kexts must be root-owned, you need to sudo chown them once, after download
 Run Turbo Boost Manager and enjoy your cooler mac.
 
   ```sh
-  ./TurboBoostManager
+  ./TurboBoostManager.sh
   ```
   The CLI presents you the following options. Pick one to do what you want.
 
