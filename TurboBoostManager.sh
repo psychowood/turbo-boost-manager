@@ -15,6 +15,23 @@ do
         echo "  ---- Turbo Boost Manager ----"
         echo "TurboBoost: [${GREEN}disabled${NC}]"
 	KEXT_FILE=$(FIND_KEXT)
+
+    if [ -z "$KEXT_FILE" ]; then
+        echo "Turbo Boost Switcher (TBS) files missing, downloading locally, please wait a few minutes..."
+        GET_FILES "$DIR/downloadTBS.log"
+        KEXT_FILE=$(FIND_KEXT)
+        if [ -z "$KEXT_FILE" ]; then
+            echo "Couldn't download Turbo Boost Switcher (TBS) files, sorry. Please check $DIR/downloadTBS.log for errors"
+            exit -1;
+        else
+            echo "Files downloaded. Don't forget to
+
+    sudo chown -R root:wheel '$DIR/tbswitcher_resources'
+
+before running Turbo Boost Manager again, otherwise you'll get permission-related errors on load."
+            rm "$DIR/downloadTBS.log"
+            exit 0;
+        fi
     fi
 	printf '
 	1) Disable Turbo Boost

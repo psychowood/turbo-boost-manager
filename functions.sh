@@ -23,6 +23,44 @@ FIND_KEXT()
     fi
 }
 
+GET_FILES()
+{
+    logfile=$1
+    DMG_URL=https://turbo-boost-switcher.s3.amazonaws.com/Turbo_Boost_Switcher_v2.10.2.dmg
+    DMG_FILE="$DIR/Turbo_Boost_Switcher_v2.10.2.dmg"
+    DMG_DIR="$DMG_FILE.TMP"
+    
+    curl -v "$DMG_URL" -o "$DMG_FILE" > "$logfile" 2>&1 
+    if [ $? -ne 0 ]; then
+        echo "Couldn't curl -s $DMG_URL -o $DMG_FILE" >> "$logfile"
+        return -1
+    fi
+    
+    hdiutil attach "$DMG_FILE" -readonly -nobrowse -noautoopen -noautoopenro -noautoopenrw -mountpoint "$DMG_DIR" >> "$logfile" 2>&1
+    if [ $? -ne 0 ]; then
+        echo "Couldn't hdiutil attach $DMG_FILE -readonly -noautoopen -noautoopenro -noautoopenrw -mountpoint $DMG_DIR" >> "$logfile"
+        return -1
+    fi
+
+    mkdir -p "$DIR/tbswitcher_resources" >> "$logfile" 2>&1
+    (cd "$DMG_DIR/tbswitcher_resources" && tar cf - --gid 0 --uid 0 -C "$DMG_DIR/tbswitcher_resources" . ) | (cd "$DIR/tbswitcher_resources" && tar xf - ) >> "$logfile" 2>&1
+    if [ $? -ne 0 ]; then
+        echo "Couldn't (cd $DMG_DIR/tbswitcher_resources && tar cf - --gid 0 --uid 0 -C $DMG_DIR/tbswitcher_resources . ) | (cd $DIR/tbswitcher_resources && tar xf - )" >> "$logfile"
+        return -1
+    fi
+
+    hdiutil detach "$DMG_DIR" >> "$logfile" 2>&1
+    if [ $? -ne 0 ]; then
+        echo "Couldn't hdiutil detach $DMG_DIR" >> "$logfile"
+        return -1
+    fi
+
+    rm "$DMG_FILE" >> "$logfile" 2>&1
+    if [ $? -ne 0 ]; then
+        echo "Couldn't rm $DMG_FILE, ignoring the error since everything else should be OK." >> "$logfile"    
+    fi
+}
+
 CHECK_STATUS()
 {
     result=`kmutil showloaded -V release | grep -c com.rugarciap.DisableTurboBoost`
