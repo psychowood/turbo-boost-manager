@@ -14,6 +14,7 @@ do
     else
         echo "  ---- Turbo Boost Manager ----"
         echo "TurboBoost: [${GREEN}disabled${NC}]"
+	KEXT_FILE=$(FIND_KEXT)
     fi
 	printf '
 	1) Disable Turbo Boost
