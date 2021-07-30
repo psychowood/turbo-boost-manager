@@ -7,13 +7,8 @@ source "$DIR/functions.sh"
 
 while true
 do
-	CHECK_STATUS
-    if [ $result -eq 0 ]; then
-        echo "  ---- Turbo Boost Manager ----"
-        echo "TurboBoost: [${RED}enabled${NC}]"
-    else
-        echo "  ---- Turbo Boost Manager ----"
-        echo "TurboBoost: [${GREEN}disabled${NC}]"
+    reset
+    echo "  ---- Turbo Boost Manager ----"
 	KEXT_FILE=$(FIND_KEXT)
 
     if [ -z "$KEXT_FILE" ]; then
@@ -33,6 +28,10 @@ before running Turbo Boost Manager again, otherwise you'll get permission-relate
             exit 0;
         fi
     fi
+
+
+	PRINT_STATUS
+
 	printf '
 	1) Disable Turbo Boost
 	2) Enable Turbo Boost
