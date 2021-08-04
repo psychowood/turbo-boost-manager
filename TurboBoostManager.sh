@@ -47,7 +47,6 @@ before running Turbo Boost Manager again, otherwise you'll get permission-relate
 	        CHECK_STATUS
             if [ $result -eq 0 ]; then
                 LOAD
-                break
             else
                 PRINT_STATUS
                 sleep 0.5
@@ -60,7 +59,6 @@ before running Turbo Boost Manager again, otherwise you'll get permission-relate
                 sleep 0.5
             else
                 UNLOAD
-                break
             fi
             ;;
         3)
@@ -68,7 +66,6 @@ before running Turbo Boost Manager again, otherwise you'll get permission-relate
             UNLOAD
             sleep 3 # give time to the system to do unload the kext properly
             LOAD
-            break
             ;;
         4)
             PRINT_STATUS
@@ -86,6 +83,9 @@ before running Turbo Boost Manager again, otherwise you'll get permission-relate
             sleep 0.5
             continue
     esac
+    if [ $1 ]; then
+        exit 0
+    fi
 done
 sudo -k 
 exit 0
