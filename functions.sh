@@ -8,6 +8,7 @@ NC='\033[0m'
 
 FIND_KEXT()
 {
+    # looks for the pre-signed kext from Turbo Boost Switcher in relevant locations
     APPS_FILE="/Applications/Turbo Boost Switcher.app/Contents/Resources/DisableTurboBoost.64bits.kext"
     APPS_RES_FILE="/Applications/tbswitcher_resources/DisableTurboBoost.64bits.kext"
     LOCAL_RES_FILE="$DIR/tbswitcher_resources/DisableTurboBoost.64bits.kext"
@@ -25,6 +26,12 @@ FIND_KEXT()
 
 GET_FILES()
 {
+    # download the official Turbo_Boost_Switcher_v2.10.2.dmg binary package 
+    # mount (attach) the dmg
+    # extract the kext files locally in 'tbswitcher_resources' 
+    # unmount (detach) the dmg
+    # remove the dmg file   
+
     logfile=$1
     DMG_URL=https://turbo-boost-switcher.s3.amazonaws.com/Turbo_Boost_Switcher_v2.10.2.dmg
     DMG_FILE="$DIR/Turbo_Boost_Switcher_v2.10.2.dmg"
