@@ -103,3 +103,25 @@ UNLOAD()
     sudo /sbin/kextunload "$KEXT_FILE"
     PRINT_STATUS    
 }
+
+
+FIND_SLEEPWATCHER()
+{
+    SW_TEST=$(sleepwatcher -v 2>/dev/null)
+    if [ $? -eq 2 ]; then #sleepwatcher -v exits with a value of 2: https://github.com/fishman/sleepwatcher/blob/media_keys/sources/sleepwatcher.m#L246
+        echo 'sleepwatcher'
+    else
+        BREW_PREFIX=$(brew --prefix 2>/dev/null)
+        if [ $? -ne 0 ]; then
+            return -1
+        fi
+        
+        SW_FILE="$BREW_PREFIX/Cellar/sleepwatcher/*/sbin/sleepwatcher"
+        SW_TEST=$($SW_FILE -v 2>/dev/null)
+        if [ $? -eq 2 ]; then #again, se above
+            echo "$SW_FILE"
+        else
+            return -2
+        fi
+    fi
+}
