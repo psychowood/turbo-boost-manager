@@ -29,6 +29,9 @@ before running Turbo Boost Manager again, otherwise you'll get permission-relate
         fi
     fi
 
+    if [ $1 ]; then
+        var=$1
+    else 
 
 	PRINT_STATUS
 
@@ -40,16 +43,12 @@ before running Turbo Boost Manager again, otherwise you'll get permission-relate
    4) Check status
    5) Exit
 
-You can also pass the number on the command line to run it automatically, as in
+You can also pass the number on the command line to run it automatically once. E.g if you run
 '$0' 1
-to Disable Turbo Boost on start.
+it will Disable Turbo Boost then quit.
 	  
-	Enter: ';
    Enter: ';
-    if [ $1 ]; then
-        var=$1
-    else 
-	    read var;
+	read var;
     fi
 
 	# option #3 Re-disable unloads the kext and loads it again
