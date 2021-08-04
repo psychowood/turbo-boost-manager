@@ -2,7 +2,7 @@
 
 ## About this project
 
-This tool is **a shell wrapper** for the functionality of[Turbo Boost Switcher (TBS)](https://github.com/rugarciap/Turbo-Boost-Switcher) in the command line. To be honest, you're probably better off using TBS GUI. 
+This tool is **a shell wrapper** for the functionality of [Turbo Boost Switcher (TBS)](https://github.com/rugarciap/Turbo-Boost-Switcher) in the command line. To be honest, you're probably better off using TBS GUI. 
 
 This tool prioritizes security therefore, you do have to enter password everytime you run the script. If you do not want to enter the password, just buy Turbo Boost Switcher (TBS) PRO or use [edupr91's turbo-boost-disable](https://github.com/edupr91/turbo-boost-disable), but bear in mind that there are security implications of using his method.
 
@@ -14,21 +14,27 @@ This tool prioritizes security therefore, you do have to enter password everytim
 + [@rugarciap](https://github.com/rugarciap) gave his blessings in [this issue](https://github.com/rugarciap/Turbo-Boost-Switcher/issues/115) to use `kexutil` to load his kexts.
 + I do not like having to load up the TBS GUI.
 + I personally do not use any of the PRO features TBS offers.
++ I didn't want to download TBS manually :)
 
 # Install
 
 This is a shell script that uses Apple's CLI kext management tools (`kextunload` and `kextutil`) to disable/enable Turbo Boost on 64-bit macOS, by loading/unloading the kext from [TBS](https://github.com/rugarciap/Turbo-Boost-Switcher).
 
+When you run TurboBoostManager.sh, if you don't already have installed TBS separately, it will automatically:
+- download the official Turbo_Boost_Switcher_v2.10.2.dmg binary package
+- extract the kext files locally in 'tbswitcher_resources'
+- remove temporary files
+
+Since kexts must be root-owned, you need to sudo chown them once, after downloading.
+
+> Consider buying TBS Pro to support the original developer  [@rugarciap](https://github.com/rugarciap).
 
 # How to use
-1. Download and install  [Turbo Boost Switcher](https://github.com/rugarciap/Turbo-Boost-Switcher).
 
-   > Consider buying TBS Pro to support the original developer  [@rugarciap](https://github.com/rugarciap).
-
-2. Run Turbo Boost Manager and enjoy your cooler mac.
+Run Turbo Boost Manager and enjoy your cooler mac.
 
   ```sh
-  ./TurboBoostManager
+  ./TurboBoostManager.sh
   ```
   The CLI presents you the following options. Pick one to do what you want.
 
