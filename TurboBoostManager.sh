@@ -32,7 +32,8 @@ before running Turbo Boost Manager again, otherwise you'll get permission-relate
 
 	PRINT_STATUS
 
-	printf '   
+	    printf '   
+   0) Monitor wake events and re-disable on wake   
    1) Disable Turbo Boost
    2) Enable Turbo Boost
    3) Re-Disable
@@ -53,6 +54,17 @@ to Disable Turbo Boost on start.
 
 	# option #3 Re-disable unloads the kext and loads it again
 	case $var in
+	    0)  
+	        SLEEPWATCHER_FILE=$(FIND_SLEEPWATCHER)
+            if [ -z "$SLEEPWATCHER_FILE" ]; then
+                echo "sleepwatcher ( https://www.bernhard-baehr.de/ ) is needed for the 'monitor wake' function."
+                echo "You can 'brew install sleepwatcher' to install it via Homebrew ( https://brew.sh/ ) "
+            else
+                echo "Sleepwatcher found and waiting"
+                $SLEEPWATCHER_FILE --verbose --wake "sh -c '$0 3'"
+            fi
+            exit
+            ;;
 	    1)  
 	        CHECK_STATUS
             if [ $result -eq 0 ]; then
@@ -87,7 +99,7 @@ to Disable Turbo Boost on start.
             ;;
         *)
             echo
-            echo "Valid range of choices [1-5]."
+            echo "Valid range of choices [0-5]."
             echo "Try again..."
             echo
             sleep 0.5
