@@ -2,19 +2,20 @@
 
 ## About this project
 
-This tool is **a shell wrapper** for the functionality of [Turbo Boost Switcher (TBS)](https://github.com/rugarciap/Turbo-Boost-Switcher) in the command line. To be honest, you're probably better off using TBS GUI. 
+This tool is **a shell wrapper** for the functionality of [Turbo Boost Switcher (TBS)](https://github.com/rugarciap/Turbo-Boost-Switcher) in the command line. To be honest, you're probably better off using the officiale (TBS GUI)[http://tbswitcher.rugarciap.com/].
 
-This tool prioritizes security therefore, you do have to enter password everytime you run the script. If you do not want to enter the password, just buy Turbo Boost Switcher (TBS) PRO or use [edupr91's turbo-boost-disable](https://github.com/edupr91/turbo-boost-disable), but bear in mind that there are security implications of using his method.
+This tool prioritizes security therefore, you do have to enter password everytime you run the script. If you do not want to enter the password, run it with sudo, but please be advised of the consequences since it'll leave a sudoed script running in a open terminal.
 
-**Note:** There is a branch named `tmux` for this project which allows TurboBoostManager to run in a tmux session. Although even with that it has to be "unloaded-and-loaded" again after a system sleep.
+As a side tip, if you want to enable sudo with TouchId on your mac, you can insert the line `auth       sufficient     pam_tid.so`  first in `/etc/pam.d/sudo` then restart your terminal.
 
-## Why this Fork?
+## Why this Fork²?
 
 + I like menus, and color-coded information.
 + [@rugarciap](https://github.com/rugarciap) gave his blessings in [this issue](https://github.com/rugarciap/Turbo-Boost-Switcher/issues/115) to use `kexutil` to load his kexts.
 + I do not like having to load up the TBS GUI.
 + I personally do not use any of the PRO features TBS offers.
 + I didn't want to download TBS manually :)
++ I didn't want to run sleepwatcher as a service, but I wanted to re-disable Turbo Boost after wake nonetheless, and I'm good with having a terminal open instead of a service running
 
 # Install
 
@@ -31,7 +32,7 @@ Since kexts must be root-owned, you need to sudo chown them once, after download
 
 # How to use
 
-Run Turbo Boost Manager and enjoy your cooler mac.
+Run TurboBoostManager.sh and enjoy your cooler mac.
 
   ```sh
   ./TurboBoostManager.sh
@@ -40,6 +41,7 @@ Run Turbo Boost Manager and enjoy your cooler mac.
 
   ```sh
  -- Turbo Boost Manager --
+	0) Monitor wake events and re-disable on wake
 	1) Disable Turbo Boost
 	2) Enable Turbo Boost
 	3) Re-Disable
@@ -50,6 +52,9 @@ Run Turbo Boost Manager and enjoy your cooler mac.
   ![example](assets/example.png)
   
   **N.B.** option #3, unloads the kext and loads it back again, to ensure that the kext is loaded. It is probably more useful after waking system from sleep when the kext is automatically unloaded.
+  option #0 uses [sleepwatcher](https://www.bernhard-baehr.de/) to run option #3 each time your Mac wakes up from sleep. You can install it as [Homebrew formula](https://formulae.brew.sh/formula/sleepwatcher) too.
+  
+
 
 ## Licence
 This software fundamentally relies on the TBS kernel extension (kext).
